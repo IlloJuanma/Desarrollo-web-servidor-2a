@@ -1,0 +1,43 @@
+:root{
+    --amarillo: #FFFF00;
+    --negro: #000000;
+    --gris: #757575;
+    --aqua: #00FFFF;
+    --morado: #D600FF;
+    --verde: #28fe07;
+}
+body {
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;
+    background-color: var(--negro);
+}
+h1 {
+    text-align: center;
+    color: var(--amarillo);
+}
+h2{
+    text-align: center;
+    color: var(--aqua);
+}
+.tabla_array-caption{
+    font-size: 28px;
+    font-family: cursive;
+    color: var(--gris);
+}
+.tabla_array{
+    border: 5px solid var(--verde);
+    border-radius: 5px;
+    color: var(--morado);
+    margin: 0 auto;
+    text-align: center;
+}
+tbody,td{
+    border: 1px solid var(--gris);
+    padding: 5px;
+}
+p{
+    text-align: center;
+    font-family: cursive;
+    font-size: 20px;
+    color: var(--gris);
+}

@@ -1,0 +1,81 @@
+* {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    color: yellow
+}
+h2{
+    color:aqua;
+}
+.tabla_series{
+    border: 2px ridge;
+    background-color: aqua;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.tabla_series-caption{
+    font-size: 40px;
+    font-family:'Times New Roman', Times, serif;
+    color: yellow;
+}
+.tabla_series-body td{
+    font-size: 18px;
+}
+.tabla_series, th{
+    font-size: 20px;
+    color: darkorchid;
+}
+.tabla_series2{
+    border: 2px ridge;
+    background-color: aqua;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.tabla_series-caption2{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    color: cornflowerblue;
+}
+.tabla_series-body2 td{
+    color: gold;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.tabla_series3{
+    border: 2px ridge;
+    background-color: aqua;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.tabla_series-caption3{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    color: darkorange;
+}
+.tabla_series-body3 td{
+    color: aqua;
+    font-size: 18px;
+    font-family: monospace;
+}
+.tabla_estudiantes{
+    border: 2px ridge;
+    background-color:chartreuse;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.tabla_estudiantes-caption{
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    color: crimson;
+}
+.tabla_estudiantes-body td{
+    font-size: 18px;
+    font-family: cursive;
+}

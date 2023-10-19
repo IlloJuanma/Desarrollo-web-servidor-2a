@@ -1,0 +1,33 @@
+:root{
+    --amarillo: #FFFF00;
+    --negro: #000000;
+    --gris: #757575;
+    --aqua: #00FFFF;
+    --morado: #D600FF;
+    --verde: #28fe07;
+}
+body {
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;
+    background-color: var(--negro);
+}
+h1 {
+    text-align: center;
+    color: var(--amarillo);
+}
+.tabla_temperaturas-caption{
+    font-size: 25px;
+    color: var(--verde);
+}
+.tabla_temperaturas{
+    border: 5px solid var(--aqua);
+    border-radius: 5px;
+    color: var(--morado);
+    margin: 0 auto;
+    text-align: center;
+}
+tbody,td{
+    border: 1px groove var(--amarillo);
+    border-collapse:separate;
+    padding: 10px;  
+}

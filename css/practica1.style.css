@@ -1,0 +1,38 @@
+:root{
+    --amarillo: #FFFF00;
+    --negro: #000000;
+    --gris: #757575;
+    --aqua: #00FFFF;
+    --morado: #D600FF;
+}
+body {
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;
+    background-color: var(--negro);
+}
+h1 {
+    text-align: center;
+    color: var(--amarillo);
+}
+.tabla_mult{
+    border: 5px ridge var(--amarillo);
+    border-radius: 5px;
+    color: var(--aqua);
+    margin: 0 auto;
+    text-align: center;
+}
+.tabla_mult-caption{
+    font-size: 30px;
+    padding: 2px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+tbody,td{
+    border: 1px solid var(--amarillo);
+    border-collapse:separate;
+    padding: 5px;
+    
+}
+thead,th{
+    color: var(--morado);
+    font-size: 20px;
+}

@@ -1,0 +1,48 @@
+* {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    color: yellow
+}
+h2{
+    color: chocolate;
+}
+
+h3 {
+    color: aqua;
+}
+
+.personas {
+    border: 2px ridge;
+    background-color: greenyellow;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.personas th{
+    font-size: 20px;
+    font-style: oblique;
+}
+
+.personas_caption {
+    color:aqua;
+    font-size: 30px;
+}
+.videojuegos{
+    border: 1px thick;
+    background-color: aqua;
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.videojuegos_caption{
+    color:aqua;
+    font-size: 30px;
+}
+.videojuegos th{
+    font-size: 20px;
+    font-style: oblique;
+}
