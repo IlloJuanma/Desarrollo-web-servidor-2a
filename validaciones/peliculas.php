@@ -25,6 +25,7 @@
             $temp_edad = "";
         }
 
+<<<<<<< HEAD
         //$_FILES["nombreCampo"]["queQueremosCoger"] -> TYPE, NAME, SIZE
         $nombre_imagen = $_FILES["imagen"]["name"];
         $tipo_imagen = $_FILES["imagen"]["type"];
@@ -37,6 +38,8 @@
 
         move_uploaded_file($ruta_temporal, $ruta_final);
 
+=======
+>>>>>>> 627768aae6b706fafcd8c9fa46fc29cc44cffdf9
         # Validar id
         if(!strlen($temp_id) > 0){
             $err_id = "El id es obligatorio";
@@ -101,7 +104,11 @@
     ?>
         <h1>Insertar película</h1>
         <div class="col-9">
+<<<<<<< HEAD
             <form action="" method="POST" enctype="multipart/form-data">
+=======
+            <form action="" method="POST">
+>>>>>>> 627768aae6b706fafcd8c9fa46fc29cc44cffdf9
                 <div class="mb-3">
                     <label class="form-label">ID Pelicula</label>
                     <input class="form-control" type="number" name="id_pelicula">
@@ -133,6 +140,7 @@
                 </div>
                 <?php if(isset($err_edad)) echo $err_edad ?>
 
+<<<<<<< HEAD
                 <div class="mb-3">
                     <label class="form-label">Imagen</label>
                     <input class=form-control" type="file" name="imagen">
@@ -140,6 +148,10 @@
                 <button class="btn btn-primary my-3" type="submit">Enviar
             </form>
             
+=======
+                <button class="btn btn-primary my-3" type="submit">Enviar
+            </form>
+>>>>>>> 627768aae6b706fafcd8c9fa46fc29cc44cffdf9
         </div>
         <?php
     if(isset($idPeliculas) && isset($titulo) && isset($fecha) && isset($edad)){
@@ -151,15 +163,23 @@
         echo "<h2>Exito!</h2>";
 
         $sql = "INSERT INTO peliculas (id_pelicula, titulo, fecha_estreno, 
+<<<<<<< HEAD
                                     edad_recomendada, imagen)
             VALUES ($idPeliculas, '$titulo','$fecha','$edad','$ruta_final')";
+=======
+                                    edad_recomendada)
+            VALUES ($idPeliculas, '$titulo','$fecha','$edad')";
+>>>>>>> 627768aae6b706fafcd8c9fa46fc29cc44cffdf9
 
         $conexion -> query($sql); //Ejecuta la sentencia y manda lo de arriba
     }
 
     ?>
 
+<<<<<<< HEAD
     </div>
+=======
+>>>>>>> 627768aae6b706fafcd8c9fa46fc29cc44cffdf9
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

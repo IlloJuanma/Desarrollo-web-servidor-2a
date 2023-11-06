@@ -13,6 +13,7 @@
 <body>
     <?php
     session_start();
+<<<<<<< HEAD
 
     if(isset($SESION["usuario"])){
         $usuario = $SESION["usuario"];
@@ -23,6 +24,9 @@
         $usuario = $_SESSION["usuario"];
     }
 
+=======
+    $usuario = $_SESSION["usuario"];
+>>>>>>> 627768aae6b706fafcd8c9fa46fc29cc44cffdf9
     ?>
     <div class="container">
         <h1>Página principal</h1>
