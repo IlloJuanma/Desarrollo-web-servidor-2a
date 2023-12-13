@@ -23,7 +23,7 @@
         cantidad: la tenemos
         id_cesta?
         habra que coger con la sesion el usuario actual
-        y hacer una consulta a la tabla cestas para sacar el ide de la cesta
+        y hacer una consulta a la tabla cestas para sacar el id de la cesta
         luego ya podremos insertar en productos_cestas
         */
          

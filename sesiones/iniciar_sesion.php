@@ -24,7 +24,7 @@
         }else{
 
             while($fila = $resultado -> fetch_assoc()){
-                $contrasena_cifrada = $fila["contraseña"];
+                $contrasena_cifrada = $fila["contrasena"];
             }
 
             $acceso_valido = password_verify($contrasena, $contrasena_cifrada);

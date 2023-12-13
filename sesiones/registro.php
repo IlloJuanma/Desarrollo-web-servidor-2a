@@ -17,12 +17,11 @@
         $contrasena = $_POST["contrasena"];
 
         $contrasena_cifrada = password_hash($contrasena, PASSWORD_DEFAULT);
-        echo $contrasena_cifrada;
+        
 
         $sql ="INSERT INTO usuarios VALUES('$usuario', '$contrasena_cifrada')"; 
         $conexion -> query($sql);
     }
-
 
 
 ?>
