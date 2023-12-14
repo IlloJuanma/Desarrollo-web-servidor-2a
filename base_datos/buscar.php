@@ -14,11 +14,13 @@
 <body>
     <?php
     session_start();
-    // Verificamos si el titulo esta
-    if (isset($_SESSION["titulo"])) {
-        $titulo = $_SESSION["titulo"];
-  
+    // ------ La madre que te pario
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $titulo = $_POST["titulo"];
+
+        $_SESSION["titulo"] = $titulo;
     }
+    //  --------
     $sql = $conexion->prepare("SELECT * FROM videojuegos WHERE titulo = '$titulo'");
     $sql->execute();
     $resultado = $sql->get_result();

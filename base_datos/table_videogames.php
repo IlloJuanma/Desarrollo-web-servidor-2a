@@ -24,6 +24,9 @@
             <tbody>
                 <div>
                     <?php
+                    if($_SERVER["REQUEST_METHOD"] == "POST"){
+                        $titulo = $_POST["titulo"];
+                    }
                     $sql = $conexion->prepare("SELECT * FROM videojuegos");
                     $sql->execute();
                     $resultado = $sql->get_result();
