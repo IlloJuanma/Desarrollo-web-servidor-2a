@@ -13,17 +13,21 @@
 
 <body>
     <?php
-    session_start();
+
     // ------ La madre que te pario
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $titulo = $_POST["titulo"];
-
-        $_SESSION["titulo"] = $titulo;
+        $filtro1 = $_POST["filtrar1"];
+        $filtro2 = $_POST["filtrar2"];
     }
     //  --------
-    $sql = $conexion->prepare("SELECT * FROM videojuegos WHERE titulo = '$titulo'");
+
+    $sql = $conexion->prepare("SELECT * FROM videojuegos
+     WHERE titulo LIKE CONCAT ('%', ?, '%') ORDER BY $filtro1 $filtro2");
+    $sql -> bind_param("s", $titulo);
     $sql->execute();
     $resultado = $sql->get_result();
+    
         if ($resultado->num_rows === 0) {
             echo '<div class="alert alert-danger text-center" role="alert">
             <strong>Error:</strong> Juego no encontrado
@@ -50,7 +54,7 @@
                         }
                         $conexion->close();
         }
-    
+
     ?>
             </div>
         </tbody>

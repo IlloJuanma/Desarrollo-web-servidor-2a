@@ -24,29 +24,51 @@
             <tbody>
                 <div>
                     <?php
+
+                    if($_SERVER["REQUEST_METHOD"] == "GET"){
+                        $sql = $conexion->prepare("SELECT * FROM videojuegos");
+                        $sql->execute();
+                        $resultado = $sql->get_result();
+                        $conexion -> close();  
+                    }
+
                     if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $titulo = $_POST["titulo"];
+                        $filtro1 = $_POST["filtrar1"];
+                        $filtro2 = $_POST["filtrar2"];
+                        
+                        $sql = $conexion->prepare("SELECT * FROM videojuegos
+                        WHERE titulo LIKE CONCAT ('%', ?, '%') ORDER BY $filtro1 $filtro2");
+                        $sql -> bind_param("s", $titulo);
+                        $sql->execute();
+                        $resultado = $sql->get_result();
                     }
-                    $sql = $conexion->prepare("SELECT * FROM videojuegos");
-                    $sql->execute();
-                    $resultado = $sql->get_result();
-                    $conexion -> close();
 
                     while ($fila = $resultado->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $fila["titulo"] . "</td>";
-                        echo "<td>" . $fila["distribuidora"] . "</td>";
-                        echo "<td>" . $fila["precio"] . "</td>";
-                        echo "<td>";
+                            echo "<td>" . $fila["titulo"] . "</td>";
+                            echo "<td>" . $fila["distribuidora"] . "</td>";
+                            echo "<td>" . $fila["precio"] . "</td>";
+                            echo "<td>";
                     }
                     ?>
                 </div>
             </tbody>
         </table>
-        <form action="buscar.php" method="POST">
+        <form action="" method="POST">
             <label>Buscar Juego</label><br>
-        <input type="text" name="titulo">
-        <input type="submit" name="buscar" value="Buscar">
+            <input type="text" name="titulo">
+            <input type="submit" name="buscar" value="Buscar"><br>
+            <label>Filtrar</label><br>
+            <select name="filtrar1">
+                <option value="titulo" selected>Titulo</option>
+                <option value="titulo">Distribuidora</option>
+                <option value="titulo">Precio</option>
+            </select>
+            <select name="filtrar2">
+                <option value="asc" name="asc" selected>ASCE</option>
+                <option value="desc" name="des">DESC</option>
+            </select>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
