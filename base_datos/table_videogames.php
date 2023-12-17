@@ -36,10 +36,13 @@
                         $titulo = $_POST["titulo"];
                         $filtro1 = $_POST["filtrar1"];
                         $filtro2 = $_POST["filtrar2"];
+                        $filtro_distribuidora = $_POST["filtro_distribuidora"];
+                        $precioMin = $_POST["precioMin"];
+                        $precioMax = $_POST["precioMax"];
                         
                         $sql = $conexion->prepare("SELECT * FROM videojuegos
-                        WHERE titulo LIKE CONCAT ('%', ?, '%') ORDER BY $filtro1 $filtro2");
-                        $sql -> bind_param("s", $titulo);
+                        WHERE titulo LIKE CONCAT ('%', ?, '%') AND distribuidora LIKE CONCAT ('%', ?, '%') AND precio BETWEEN ? AND ? ORDER BY $filtro1 $filtro2");
+                        $sql -> bind_param("ssdd", $titulo, $filtro_distribuidora, $precioMin, $precioMax);
                         $sql->execute();
                         $resultado = $sql->get_result();
                     }
@@ -69,6 +72,17 @@
                 <option value="asc" name="asc" selected>ASCE</option>
                 <option value="desc" name="des">DESC</option>
             </select>
+            <select name="filtro_distribuidora">
+                <option value="">Seleccionar Distribuidora</option>
+                <option value="Rockstar Games">Rockstar Games</option>
+                <option value="Insomniac">Insomniac</option>
+                <option value="Ubisoft">Ubisoft</option>
+                <option value="PS Studios">PS Studios</option>
+            </select>
+            <br><br>
+            <label>Filtrar por Precios</label>
+            <input type="number" name="precioMin" placeholder="Precio minimo">
+            <input type="number" name="precioMax" placeholder="Precio maximo">
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
