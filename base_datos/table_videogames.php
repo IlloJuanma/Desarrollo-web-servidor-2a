@@ -19,6 +19,8 @@
                     <th>Titulo</th>
                     <th>Distribuidora</th>
                     <th>Precio</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -40,19 +42,50 @@
                         $precioMin = $_POST["precioMin"];
                         $precioMax = $_POST["precioMax"];
                         
+                        if(isset($precioMIN) && isset($precioMax)){
                         $sql = $conexion->prepare("SELECT * FROM videojuegos
                         WHERE titulo LIKE CONCAT ('%', ?, '%') AND distribuidora LIKE CONCAT ('%', ?, '%') AND precio BETWEEN ? AND ? ORDER BY $filtro1 $filtro2");
+                        // Si quiero comprobar sin precio comprobar con isset si esta precio, si esta realizo esta consulta sino realizo otra consulta sin el precio
                         $sql -> bind_param("ssdd", $titulo, $filtro_distribuidora, $precioMin, $precioMax);
-                        $sql->execute();
-                        $resultado = $sql->get_result();
-                    }
+                        $sql -> execute();
+                        $resultado = $sql -> get_result();
+                        } else {
+                        $sql = $conexion->prepare("SELECT * FROM videojuegos
+                        WHERE titulo LIKE CONCAT ('%', ?, '%') AND distribuidora LIKE CONCAT ('%', ?, '%') ORDER BY $filtro1 $filtro2");
+                        // Si quiero comprobar sin precio comprobar con isset si esta precio, si esta realizo esta consulta sino realizo otra consulta sin el precio
+                        $sql -> bind_param("ss", $titulo, $filtro_distribuidora);
+                        $sql -> execute();
+                        $resultado = $sql -> get_result();
 
-                    while ($fila = $resultado->fetch_assoc()) {
-                        echo "<tr>";
+                        }
+                    }
+                
+                    while ($fila = $resultado -> fetch_assoc()) {
+                            echo "<tr>";
                             echo "<td>" . $fila["titulo"] . "</td>";
                             echo "<td>" . $fila["distribuidora"] . "</td>";
                             echo "<td>" . $fila["precio"] . "</td>";
                             echo "<td>";
+                            ?>
+                            <td>
+                                <form action="view_videogame.php" method="get">
+                                    <input type="hidden" name="titulo" value="<?php echo $fila["titulo"]?>">
+                                    <input type="submit" class="btn btn-secondary" value="Ver">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="edit_videogame.php" method="get">
+                                    <input type="hidden" name="titulo" value="<?php echo $fila["titulo"] ?>">
+                                    <input type="submit" class="btn btn-info" value="Editar">
+                                </form>
+                            </td>
+                            <td>
+                                <form action="delete_videogame.php" method="POST">
+                                    <input type="hidden" name="titulo" value="<?php echo $fila["titulo"] ?>">
+                                    <input type="submit" class="btn btn-danger" value="Borrar">
+                                </form>
+                            </td>
+                    <?php
                     }
                     ?>
                 </div>
@@ -78,6 +111,9 @@
                 <option value="Insomniac">Insomniac</option>
                 <option value="Ubisoft">Ubisoft</option>
                 <option value="PS Studios">PS Studios</option>
+                <option value="Naughty Dog">Naughty Dog</option>
+                <option value="Santa Monica">Santa Monica</option>
+                <option value="Bancarrota SL">Bancarrota SL</option>
             </select>
             <br><br>
             <label>Filtrar por Precios</label>
