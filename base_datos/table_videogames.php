@@ -13,6 +13,7 @@
 <body>
     <div class="container">
         <h1>Videogames</h1>
+        <a href="create_videogame.php" class="btn btn-info">Create videogames</a>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -70,19 +71,19 @@
                             <td>
                                 <form action="view_videogame.php" method="get">
                                     <input type="hidden" name="titulo" value="<?php echo $fila["titulo"]?>">
-                                    <input type="submit" class="btn btn-secondary" value="Ver">
+                                    <input type="submit" class="btn btn-secondary" value="Details">
                                 </form>
                             </td>
                             <td>
                                 <form action="edit_videogame.php" method="get">
                                     <input type="hidden" name="titulo" value="<?php echo $fila["titulo"] ?>">
-                                    <input type="submit" class="btn btn-info" value="Editar">
+                                    <input type="submit" class="btn btn-info" value="Edit">
                                 </form>
                             </td>
                             <td>
                                 <form action="delete_videogame.php" method="POST">
                                     <input type="hidden" name="titulo" value="<?php echo $fila["titulo"] ?>">
-                                    <input type="submit" class="btn btn-danger" value="Borrar">
+                                    <input type="submit" class="btn btn-danger" value="Delete">
                                 </form>
                             </td>
                     <?php
