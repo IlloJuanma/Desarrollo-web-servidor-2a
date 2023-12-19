@@ -43,22 +43,24 @@
                         $precioMin = $_POST["precioMin"];
                         $precioMax = $_POST["precioMax"];
                         
-                        if(isset($precioMIN) && isset($precioMax)){
+                        if(isset($precioMin) && isset($precioMax)){
                         $sql = $conexion->prepare("SELECT * FROM videojuegos
-                        WHERE titulo LIKE CONCAT ('%', ?, '%') AND distribuidora LIKE CONCAT ('%', ?, '%') AND precio BETWEEN ? AND ? ORDER BY $filtro1 $filtro2");
+                        WHERE precio BETWEEN ? AND ? ORDER BY $filtro1 $filtro2");
                         // Si quiero comprobar sin precio comprobar con isset si esta precio, si esta realizo esta consulta sino realizo otra consulta sin el precio
-                        $sql -> bind_param("ssdd", $titulo, $filtro_distribuidora, $precioMin, $precioMax);
+                        $sql -> bind_param("dd", $precioMin, $precioMax);
                         $sql -> execute();
                         $resultado = $sql -> get_result();
-                        } else {
+                        }
+                        if($precioMin === "" && $precioMax=== ""){
                         $sql = $conexion->prepare("SELECT * FROM videojuegos
                         WHERE titulo LIKE CONCAT ('%', ?, '%') AND distribuidora LIKE CONCAT ('%', ?, '%') ORDER BY $filtro1 $filtro2");
                         // Si quiero comprobar sin precio comprobar con isset si esta precio, si esta realizo esta consulta sino realizo otra consulta sin el precio
                         $sql -> bind_param("ss", $titulo, $filtro_distribuidora);
                         $sql -> execute();
                         $resultado = $sql -> get_result();
-
                         }
+
+                        
                     }
                 
                     while ($fila = $resultado -> fetch_assoc()) {
